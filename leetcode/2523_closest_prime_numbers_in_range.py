@@ -1,4 +1,3 @@
-from itertools import combinations
 from typing import List
 
 
@@ -16,13 +15,14 @@ class Solution:
         elif len(prime_list) < 2:
             return [-1, -1]
 
-        prime_pair = combinations(prime_list, 2)
-
         target = []
         min_diff = right - left + 1
-        for pair in prime_pair:
-            if pair[1] - pair[0] < min_diff:
-                min_diff = pair[1] - pair[0]
-                target = [pair[0], pair[1]]
+        for index in range(len(prime_list)):
+            if index == len(prime_list) - 1:
+                break
+
+            if prime_list[index + 1] - prime_list[index] < min_diff:
+                min_diff = prime_list[index + 1] - prime_list[index]
+                target = [prime_list[index], prime_list[index + 1]]
         return target
 
