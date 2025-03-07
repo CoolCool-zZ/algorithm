@@ -4,25 +4,26 @@ from typing import List
 class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
         # TODO - Result = Time Limit Exceeded
-        prime_list = list(range(left, right + 1))
-        for divisor in range(2, right + 1):
-            for dividend in prime_list:
-                if dividend > divisor and dividend % divisor == 0:
-                    prime_list.remove(dividend)
+        right_square_root = int(right ** 0.5)
 
-        if len(prime_list) == 2:
-            return prime_list
-        elif len(prime_list) < 2:
+        nums = list(range(left, right + 1))
+        for divisor in range(2, right_square_root + 1):
+            for dividend in nums:
+                if dividend > divisor and dividend % divisor == 0:
+                    nums.remove(dividend)
+
+        if len(nums) == 2:
+            return nums
+        elif len(nums) < 2:
             return [-1, -1]
 
         target = []
         min_diff = right - left + 1
-        for index in range(len(prime_list)):
-            if index == len(prime_list) - 1:
+        for index in range(len(nums)):
+            if index == len(nums) - 1:
                 break
 
-            if prime_list[index + 1] - prime_list[index] < min_diff:
-                min_diff = prime_list[index + 1] - prime_list[index]
-                target = [prime_list[index], prime_list[index + 1]]
+            if nums[index + 1] - nums[index] < min_diff:
+                min_diff = nums[index + 1] - nums[index]
+                target = [nums[index], nums[index + 1]]
         return target
-
