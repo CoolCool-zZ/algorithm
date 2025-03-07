@@ -3,17 +3,14 @@ from typing import List
 
 class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
-        # TODO - Result = Time Limit Exceeded
-        right_square_root = int(right ** 0.5)
-
         nums = [True] * (right + 1)
-        for dividend in range(left, right + 1):
-            if nums[dividend] == False:
-                continue
+        nums[0] = False
+        nums[1] = False
 
-            for divisor in range(2, right_square_root + 1):
-                if dividend > divisor and dividend % divisor == 0:
-                    nums[dividend] = False
+        for num in range(2, right + 1):
+            if nums[num] == True:
+                for j in range(2, right // num + 1):
+                    nums[num * j] = False
 
         prime_list = []
         for index in range(left, right + 1):
@@ -21,7 +18,7 @@ class Solution:
                 prime_list.append(index)
 
         if len(prime_list) == 2:
-            return nums
+            return prime_list
         elif len(prime_list) < 2:
             return [-1, -1]
 
@@ -35,3 +32,17 @@ class Solution:
                 min_diff = prime_list[index + 1] - prime_list[index]
                 target = [prime_list[index], prime_list[index + 1]]
         return target
+
+def main():
+    # define test case
+    left = 69346
+    right = 69379
+
+    # run
+    solution = Solution()
+    result = solution.closestPrimes(left, right)
+    print(result)
+
+
+if __name__ == '__main__':
+    main()
