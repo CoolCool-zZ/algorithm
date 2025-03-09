@@ -3,20 +3,14 @@ from typing import List
 
 class Solution:
     def numberOfAlternatingGroups(self, colors: List[int], k: int) -> int:
-        # TODO time limit exceeded
-        result = 0
-        for index in range(len(colors)):
-            target_colors = colors[index:min(len(colors), index + k)] + colors[0:max(0, index + k - len(colors))]
+        colors.extend(colors[:(k - 1)])
+        count = 0
+        left = 0
 
-            success_flag = True
-            prev = target_colors[0]
-            for color in target_colors[1:]:
-                if prev == color:
-                    success_flag = False
-                    break
-                prev = color
+        for right in range(len(colors)):
+            if right > 0 and colors[right] == colors[right - 1]:
+                left = right
 
-            if success_flag:
-                result += 1
-
-        return result
+            if right - left + 1 >= k:
+                count += 1
+        return count
