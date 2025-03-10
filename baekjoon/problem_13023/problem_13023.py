@@ -16,6 +16,7 @@ for relation in range(count_of_relationship):
     relation_graph[person1].append(person2)
     relation_graph[person2].append(person1)
 
+
 # dfs
 def dfs(graph, nth_person, visited, depth):
     global found
@@ -40,7 +41,7 @@ else:
         if found:
             break
 
-    if found :
+    if found:
         print(1)
-    else :
+    else:
         print(0)

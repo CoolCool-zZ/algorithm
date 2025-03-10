@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def numberOfAlternatingGroups(self, colors: List[int], k: int) -> int:
-        colors.extend(colors[:(k - 1)])
+        colors.extend(colors[: (k - 1)])
         count = 0
         left = 0
 

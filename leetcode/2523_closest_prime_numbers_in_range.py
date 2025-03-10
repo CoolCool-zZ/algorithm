@@ -33,6 +33,7 @@ class Solution:
                 target = [prime_list[index], prime_list[index + 1]]
         return target
 
+
 def main():
     # define test case
     left = 69346
@@ -44,5 +45,5 @@ def main():
     print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

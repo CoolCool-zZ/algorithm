@@ -23,10 +23,17 @@ while not found:
         found = True
         break
 
-    for next_location in (current_location * 2, current_location - 1, current_location + 1):
+    for next_location in (
+        current_location * 2,
+        current_location - 1,
+        current_location + 1,
+    ):
         if 0 <= next_location < 100_001 and visited[next_location]["depth"] == -1:
             bfs_queue.append(next_location)
-            visited[next_location] = {"depth": current_depth, "parent": current_location}
+            visited[next_location] = {
+                "depth": current_depth,
+                "parent": current_location,
+            }
             if next_location == sister_location:
                 found = True
                 current_location = next_location

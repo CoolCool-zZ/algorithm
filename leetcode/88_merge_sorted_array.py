@@ -36,7 +36,7 @@ class Solution:
 
 def main():
     # define test case
-    nums1 = [2,0]
+    nums1 = [2, 0]
     m = 1
     nums2 = [1]
     n = 1
@@ -46,5 +46,5 @@ def main():
     solution.merge(nums1, m, nums2, n)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
